@@ -1,13 +1,14 @@
 package com.example.trace.threadlocal;
 
 import com.example.trace.threadlocal.code.FieldService;
+import com.example.trace.threadlocal.code.ThreadLocalService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 @Slf4j
-public class FieldServiceTest {
+public class ThreadLocalServiceTest {
 
-    private FieldService fieldService = new FieldService();
+    private ThreadLocalService fieldService = new ThreadLocalService();
 
     @Test
     void field(){
@@ -26,8 +27,8 @@ public class FieldServiceTest {
         threadA.setName("thread B");
 
         threadA.start();
-        //sleep(2000); // 동시성 문제 발생 O
-        sleep(1000); // 동시성 문제 발생 X
+        //sleep(2000); // 동시성 문제 발생 X
+        sleep(1000); // 동시성 문제 발생 O
         threadB.start();
         sleep(2000);
         log.info("main exit");
